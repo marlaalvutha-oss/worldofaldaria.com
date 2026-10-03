@@ -1,0 +1,564 @@
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #d9b96e;
+      --gold-light: #f0d999;
+      --blue: #77bfff;
+      --purple: #9d7cff;
+      --dark: #050712;
+      --panel: rgba(8, 11, 27, 0.82);
+      --text: #e8e4dc;
+      --muted: #bbb7b0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "IM Fell English", Georgia, serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(53, 66, 130, 0.20), transparent 30%),
+        radial-gradient(circle at 80% 35%, rgba(91, 48, 120, 0.16), transparent 30%),
+        linear-gradient(180deg, #050713 0%, #080b19 45%, #04050d 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.85) 1px, transparent 1.4px),
+        radial-gradient(circle, rgba(119,191,255,.65) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(217,185,110,.45) 1px, transparent 1.5px);
+      background-size: 97px 97px, 151px 151px, 211px 211px;
+      background-position: 0 0, 31px 47px, 83px 19px;
+      opacity: 0.28;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+      padding-bottom: 80px;
+    }
+
+    .site-header {
+      text-align: center;
+      padding: 38px 0 18px;
+    }
+
+    .logo {
+      display: block;
+      width: min(520px, 88vw);
+      margin: 0 auto 20px;
+      filter: drop-shadow(0 0 18px rgba(84, 156, 255, 0.24));
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: "Cinzel", serif;
+      font-size: 0.92rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .nav a {
+      text-decoration: none;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--gold-light);
+      text-shadow: 0 0 10px rgba(217,185,110,.5);
+    }
+
+    .nav-separator {
+      color: var(--blue);
+      opacity: 0.8;
+    }
+
+    .divider {
+      width: min(700px, 80%);
+      height: 1px;
+      margin: 26px auto 45px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(119,191,255,.5),
+        var(--gold),
+        rgba(119,191,255,.5),
+        transparent
+      );
+      box-shadow: 0 0 10px rgba(119,191,255,.25);
+    }
+
+    .page-title {
+      margin: 0;
+      text-align: center;
+      font-family: "Cinzel Decorative", serif;
+      font-size: clamp(2.2rem, 6vw, 4.4rem);
+      font-weight: 700;
+      color: var(--gold);
+      text-shadow:
+        0 0 12px rgba(217,185,110,.18),
+        0 0 24px rgba(88,142,255,.15);
+    }
+
+    .intro {
+      max-width: 760px;
+      margin: 18px auto 60px;
+      text-align: center;
+      font-size: 1.18rem;
+      line-height: 1.8;
+      color: #d6d2cb;
+    }
+
+    .author {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.85fr) minmax(320px, 1.15fr);
+      gap: 48px;
+      align-items: center;
+      margin: 0 auto 85px;
+    }
+
+    .author.reverse {
+      grid-template-columns: minmax(320px, 1.15fr) minmax(280px, 0.85fr);
+    }
+
+    .author.reverse .author-image {
+      order: 2;
+    }
+
+    .author.reverse .author-copy {
+      order: 1;
+    }
+
+    .author-image {
+      position: relative;
+    }
+
+    .author-image::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border: 1px solid rgba(217,185,110,.35);
+      pointer-events: none;
+    }
+
+    .author-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(119,191,255,.25);
+      box-shadow:
+        0 0 25px rgba(79,127,255,.16),
+        0 15px 45px rgba(0,0,0,.55);
+    }
+
+    .author-copy {
+      padding: 10px 0;
+    }
+
+    .author-name {
+      margin: 0 0 6px;
+      font-family: "Cinzel Decorative", serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--gold);
+    }
+
+    .author-role {
+      margin-bottom: 25px;
+      font-family: "Cinzel", serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .author-copy p {
+      margin: 0 0 18px;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: #ddd9d2;
+    }
+
+    .author-copy strong {
+      color: var(--gold-light);
+      font-weight: normal;
+    }
+
+    .origin {
+      position: relative;
+      max-width: 960px;
+      margin: 25px auto 0;
+      padding: 55px 65px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(13,17,38,.94),
+          rgba(17,12,31,.92)
+        );
+      border: 1px solid rgba(217,185,110,.30);
+      box-shadow:
+        0 0 35px rgba(73,112,255,.10),
+        inset 0 0 40px rgba(0,0,0,.22);
+    }
+
+    .origin::before,
+    .origin::after {
+      content: "✦";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gold);
+      font-size: 1.15rem;
+      background: #080a17;
+      padding: 0 14px;
+    }
+
+    .origin::before {
+      top: -11px;
+    }
+
+    .origin::after {
+      bottom: -11px;
+    }
+
+    .origin-title {
+      margin: 0 0 30px;
+      text-align: center;
+      font-family: "Cinzel Decorative", serif;
+      font-size: clamp(1.7rem, 4vw, 2.7rem);
+      color: var(--gold);
+    }
+
+    .origin p {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      font-size: 1.12rem;
+      line-height: 1.85;
+      color: #ddd9d2;
+    }
+
+    .origin .aldaria-line {
+      margin: 34px auto;
+      text-align: center;
+      font-family: "Cinzel", serif;
+      font-size: clamp(1.25rem, 3vw, 1.7rem);
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+      text-shadow: 0 0 12px rgba(217,185,110,.18);
+    }
+
+    .footer-ornament {
+      margin: 70px auto 0;
+      text-align: center;
+      font-family: "Cinzel", serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      color: rgba(217,185,110,.7);
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777b8a;
+    }
+
+    @media (max-width: 820px) {
+      .author,
+      .author.reverse {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 70px;
+      }
+
+      .author.reverse .author-image,
+      .author.reverse .author-copy {
+        order: initial;
+      }
+
+      .author-image {
+        width: min(520px, 100%);
+        margin: 0 auto;
+      }
+
+      .author-copy {
+        text-align: left;
+      }
+
+      .origin {
+        padding: 45px 28px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: 90%;
+      }
+
+      .site-header {
+        padding-top: 24px;
+      }
+
+      .nav {
+        gap: 8px;
+        font-size: 0.76rem;
+        letter-spacing: 0.09em;
+      }
+
+      .intro {
+        font-size: 1.05rem;
+      }
+
+      .author-copy p,
+      .origin p {
+        font-size: 1rem;
+      }
+
+      .origin {
+        padding: 38px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <header class="site-header">
+
+      <a href="index.html">
+        <img
+          src="world-of-aldaria-logo-03t.png"
+          alt="World of Aldaria"
+          class="logo"
+        >
+      </a>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <span class="nav-separator">✦</span>
+        <a href="books.html">Books</a>
+        <span class="nav-separator">✦</span>
+        <a href="stories.html">Stories</a>
+        <span class="nav-separator">✦</span>
+        <a href="about.html">About</a>
+      </nav>
+
+    </header>
+
+    <div class="divider"></div>
+
+    <main>
+
+      <h1 class="page-title">About the Authors</h1>
+
+      <p class="intro">
+        Behind the dragons, questionable decisions, unlikely heroes,
+        and general mayhem of the World of Aldaria are two people who
+        have been telling stories together for a very long time.
+      </p>
+
+
+      <!-- BRENDA -->
+
+      <section class="author">
+
+        <div class="author-image">
+          <img
+            src="brenda-author.png"
+            alt="Brenda Varian"
+          >
+        </div>
+
+        <div class="author-copy">
+
+          <h2 class="author-name">Brenda Varian</h2>
+
+          <div class="author-role">
+            Writer • Artist • Worldbuilder
+          </div>
+
+          <p>
+            Brenda Varian is a writer, artist, lifelong gamer, and the
+            original architect of the World of Aldaria. Originally from
+            Prince George’s County, Maryland, in the shadow of the nation’s
+            capital, she now lives in Virginia.
+          </p>
+
+          <p>
+            A lifelong lover of fantasy, history, folklore, and anything
+            with dragons in it, she has never been particularly good at
+            having only one creative outlet. Writing shares space with
+            painting model horses and miniatures, crochet, historical
+            rabbit holes, and whatever new project seemed like a perfectly
+            reasonable idea five minutes ago.
+          </p>
+
+          <p>
+            She approaches storytelling much the same way she approaches
+            most creative things:
+            <strong>learn the rules, figure out why they work, and then
+            decide which ones would be more interesting broken.</strong>
+          </p>
+
+          <p>
+            Her stories tend to favor complicated characters over perfect
+            heroes, humor in places it probably shouldn’t be, and found
+            families built from people who might never have chosen one
+            another under saner circumstances.
+          </p>
+
+          <p>
+            She lives in Virginia with her husband and writing partner,
+            Jim, and a household in which the line between creative project
+            and lifestyle choice disappeared a long time ago.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- JIM -->
+
+      <section class="author reverse">
+
+        <div class="author-image">
+          <img
+            src="jim-author.png"
+            alt="Basil Jim Varian"
+          >
+        </div>
+
+        <div class="author-copy">
+
+          <h2 class="author-name">Basil “Jim” Varian</h2>
+
+          <div class="author-role">
+            Writer • Gamer • Worldbuilder
+          </div>
+
+          <p>
+            Basil “Jim” Varian is a U.S. Army veteran, retired corrections
+            officer, and longtime storyteller originally from Montgomery
+            County, Pennsylvania, now living in Virginia.
+          </p>
+
+          <p>
+            He has been writing for nearly fifty years, with stories shaped
+            by a lifelong love of fantasy, adventure, and the strange places
+            imagination can lead.
+          </p>
+
+          <p>
+            His previous work includes <em>The Advent of Darkness</em> and
+            <em>Strange Days</em>.
+          </p>
+
+          <p>
+            Jim is a co-creator of the World of Aldaria, helping shape its
+            characters, stories, history, and mythology over decades of
+            storytelling. Magnes Magnessun began as one of his characters
+            during the original tabletop adventures and has been causing
+            trouble ever since.
+          </p>
+
+          <p>
+            His creative influences include fantasy in many forms,
+            especially <em>Slayers</em> and the wonderfully destructive
+            Lina Inverse, along with Bill Willingham’s <em>Ironwood</em>.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- FROM THE TABLE TO ALDARIA -->
+
+      <section class="origin">
+
+        <h2 class="origin-title">From the Table to Aldaria</h2>
+
+        <p>
+          The World of Aldaria began around a Dungeons &amp; Dragons table
+          in the early 2000s, when Brenda started the campaign that would
+          eventually grow into something far beyond the game itself.
+        </p>
+
+        <p>
+          From the beginning, we put our own spin on D&amp;D, playing it to
+          our own tastes. Humor was always part of the adventure, and we
+          happily leaned into the familiar tropes of fantasy, sometimes
+          playing them straight, sometimes turning them on their heels, and
+          sometimes seeing just how much trouble our characters could get
+          into with them.
+        </p>
+
+        <p>
+          What began as characters, adventures, inside jokes, and stories
+          created over years of play gradually became something much larger.
+          The characters developed lives beyond the game. The world grew its
+          own history, cultures, mythology, conflicts, and legends.
+        </p>
+
+        <p>
+          Eventually, there were stories we wanted to tell that no longer
+          belonged only at the gaming table.
+        </p>
+
+        <div class="aldaria-line">
+          Aldaria became a world of its own.
+        </div>
+
+        <p>
+          The novels and short stories set here have evolved far beyond
+          those original campaigns, but their roots are still there:
+          friendship, ridiculous decisions, unexpected consequences,
+          found family, a love of the fantasy genre and its traditions,
+          and that particular kind of magic that happens when people
+          create a story together.
+        </p>
+
+      </section>
+
+      <div class="footer-ornament">
+        ✦ STORIES ARE BETTER WHEN THEY’RE SHARED ✦
+      </div>
+
+    </main>
+
+    <footer>
+      &copy; World of Aldaria
+    </footer>
+
+  </div>
+
+</body>
+</html>
