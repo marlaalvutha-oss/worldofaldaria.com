@@ -57,7 +57,49 @@
       width: min(560px, 90vw);
       filter: drop-shadow(0 0 24px rgba(58,184,255,.55)) drop-shadow(0 0 60px rgba(58,184,255,.25));
     }
+/* ── Navigation ── */
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin: 8px 0 24px;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  animation: fadeIn 1.2s .3s ease both;
+}
 
+.nav a {
+  color: var(--gold-light);
+  text-decoration: none;
+  transition: color .3s, text-shadow .3s;
+}
+
+.nav a:hover {
+  color: #ffffff;
+  text-shadow:
+    0 0 10px rgba(58,184,255,.9),
+    0 0 20px rgba(58,184,255,.5);
+}
+
+.nav-separator {
+  color: var(--blue-glow);
+  opacity: .7;
+}
+
+@media (max-width: 600px) {
+  .nav {
+    gap: 12px;
+    font-size: 10px;
+    letter-spacing: .1em;
+  }
+
+  .nav-separator {
+    display: none;
+  }
+}
     /* ── Divider ── */
     .divider {
       width: min(420px, 80vw); height: 2px;
@@ -187,9 +229,15 @@
   <div class="logo-wrap">
    <img class="logo-img" src="world-of-aldaria-logo-03t.png" alt="World of Aldaria"/>
   </div>
-
+<nav class="nav">
+  <a href="index.html">Home</a>
+  <span class="nav-separator">✦</span>
+  <a href="stories.html">Stories</a>
+  <span class="nav-separator">✦</span>
+  <a href="#heart-of-aldaria">The Book</a>
+</nav>
   <div class="divider"></div>
-  <div class="series-title">Heart of Aldaria</div>
+  <div class="series-title" id="heart-of-aldaria">Heart of Aldaria</div>
   <div class="coming-soon">Coming Soon</div>
 
   <div class="char-wrap">
