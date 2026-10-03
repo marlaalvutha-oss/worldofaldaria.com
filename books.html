@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Books | World of Aldaria</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(13, 74, 128, 0.38), transparent 34%),
+        radial-gradient(circle at 78% 70%, rgba(66, 16, 104, 0.32), transparent 38%),
+        linear-gradient(135deg, #020813 0%, #040815 45%, #100520 100%);
+      color: #eee3c7;
+      font-family: Georgia, "Times New Roman", serif;
+      overflow-x: hidden;
+    }
+
+    /* STARS */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.85) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(76,184,255,.75) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,199,78,.65) 1px, transparent 1.5px);
+      background-size: 173px 173px, 251px 251px, 317px 317px;
+      background-position: 20px 30px, 80px 120px, 140px 50px;
+      opacity: .55;
+      z-index: -1;
+    }
+
+    .page {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+      padding: 35px 0 70px;
+    }
+
+    /* LOGO */
+    .logo-wrap {
+      text-align: center;
+    }
+
+    .logo {
+      width: min(620px, 92%);
+      height: auto;
+      filter: drop-shadow(0 0 16px rgba(42, 156, 222, .32));
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin: 12px auto 28px;
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #d9bd68;
+      text-decoration: none;
+      transition: .25s;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #40bfff;
+    }
+
+    .diamond {
+      color: #238bc0;
+      font-size: 11px;
+    }
+
+    /* DIVIDER */
+    .divider {
+      width: min(450px, 80%);
+      height: 1px;
+      margin: 0 auto 30px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #c9a44d,
+        #43b9e8,
+        #c9a44d,
+        transparent
+      );
+      position: relative;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "◆";
+      position: absolute;
+      top: -8px;
+      color: #e4c56a;
+      font-size: 12px;
+    }
+
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    /* PAGE TITLE */
+    h1 {
+      text-align: center;
+      color: #d9b857;
+      text-transform: uppercase;
+      letter-spacing: 7px;
+      font-size: clamp(34px, 5vw, 58px);
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(211, 163, 57, .22);
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 48px;
+      color: #c9c1b1;
+      font-size: 17px;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* BOOK LIST */
+    .book-list {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .book {
+      display: grid;
+      grid-template-columns: minmax(260px, 390px) minmax(0, 1fr);
+      gap: 55px;
+      align-items: center;
+      padding: 10px 0 60px;
+    }
+
+    .cover-frame {
+      width: 100%;
+      padding: 4px;
+      border: 1px solid rgba(218, 181, 84, .65);
+      background: linear-gradient(
+        145deg,
+        rgba(218,181,84,.28),
+        rgba(31,137,187,.18),
+        rgba(218,181,84,.15)
+      );
+      box-shadow:
+        0 16px 40px rgba(0,0,0,.6),
+        0 0 30px rgba(57,149,210,.15);
+    }
+
+    .cover-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .book-info h2 {
+      color: #e2c46c;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 10px;
+    }
+
+    .book-number {
+      color: #8bc7e8;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      margin-bottom: 24px;
+    }
+
+    .tagline {
+      color: #ddd1b9;
+      font-size: 19px;
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .book-text {
+      color: #cfc6b3;
+      line-height: 1.75;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .coming-soon {
+      color: #d9b857;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    /* BUTTON */
+    .button {
+      display: inline-block;
+      padding: 13px 22px;
+      color: #e7d39a;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      border: 1px solid rgba(215,182,93,.55);
+      background: linear-gradient(
+        90deg,
+        rgba(15,41,68,.72),
+        rgba(47,19,65,.72)
+      );
+      transition: .25s;
+    }
+
+    .button:hover {
+      color: white;
+      border-color: #58bce8;
+      box-shadow: 0 0 15px rgba(57,166,219,.3);
+      transform: translateY(-2px);
+    }
+
+    /* FUTURE BOOKS */
+    .future {
+      max-width: 760px;
+      margin: 25px auto 0;
+      padding: 30px 25px;
+      text-align: center;
+      border-top: 1px solid rgba(211,177,84,.35);
+      border-bottom: 1px solid rgba(211,177,84,.35);
+      background: rgba(0,0,0,.14);
+    }
+
+    .future h3 {
+      color: #d7b65d;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    .future p {
+      color: #aaa18f;
+      line-height: 1.7;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 70px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(210,175,80,.25);
+      color: #867b67;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        gap: 14px;
+        letter-spacing: 2px;
+      }
+
+      h1 {
+        letter-spacing: 4px;
+      }
+
+      .book {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .cover-frame {
+        width: min(390px, 100%);
+        margin: 0 auto;
+      }
+
+      .book-info {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <div class="logo-wrap">
+      <img
+        class="logo"
+        src="world-of-aldaria-logo-03t.png"
+        alt="World of Aldaria">
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <span class="diamond">◆</span>
+      <a href="stories.html">Stories</a>
+      <span class="diamond">◆</span>
+      <a href="books.html">Books</a>
+    </nav>
+
+    <div class="divider"></div>
+
+    <h1>Books</h1>
+
+    <p class="intro">
+      Adventures from the World of Aldaria.
+      Dragons, magic, unlikely heroes, terrible decisions,
+      and the people who become family along the way.
+    </p>
+
+    <section class="book-list">
+
+      <!-- THE HEART OF ALDARIA -->
+      <article class="book">
+
+        <div class="cover-frame">
+          <img
+            src="cover.png"
+            alt="The Heart of Aldaria">
+        </div>
+
+        <div class="book-info">
+
+          <h2>The Heart of Aldaria</h2>
+
+          <div class="book-number">
+            World of Aldaria
+          </div>
+
+          <p class="tagline">
+            Magic, mayhem, and something far more dangerous...
+            falling in love.
+          </p>
+
+          <p class="book-text">
+            When a mission from the Dragon Council sends an unlikely
+            band of adventurers into the dangerous northern lands,
+            they find themselves caught in something far larger than
+            the mission that brought them together.
+          </p>
+
+          <p class="book-text">
+            Dragons, kingdoms, old secrets, dangerous magic, and a
+            collection of people who may just become something none
+            of them expected: family.
+          </p>
+
+          <div class="coming-soon">
+            Coming Soon
+          </div>
+
+          <a class="button" href="heart.html">
+            Explore the Book
+          </a>
+
+        </div>
+
+      </article>
+
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="future">
+
+      <h3>More From Aldaria</h3>
+
+      <p>
+        The Heart of Aldaria is only the beginning.
+        More adventures from the World of Aldaria are already
+        waiting beyond the horizon.
+      </p>
+
+    </section>
+
+    <footer>
+      WORLD OF ALDARIA
+    </footer>
+
+  </main>
+
+</body>
+</html>
