@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Stories | World of Aldaria</title>
+  <title>Heart of Aldaria | World of Aldaria</title>
 
   <style>
     * {
@@ -94,7 +94,7 @@
     .divider {
       width: min(450px, 80%);
       height: 1px;
-      margin: 0 auto 30px;
+      margin: 0 auto 38px;
       background: linear-gradient(
         90deg,
         transparent,
@@ -130,35 +130,31 @@
       text-transform: uppercase;
       letter-spacing: 7px;
       font-size: clamp(34px, 5vw, 58px);
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       text-shadow: 0 0 20px rgba(211, 163, 57, .22);
     }
 
-    .intro {
+    .tagline {
       text-align: center;
-      max-width: 760px;
+      max-width: 800px;
       margin: 0 auto 48px;
       color: #c9c1b1;
-      font-size: 17px;
+      font-size: clamp(17px, 2vw, 21px);
       line-height: 1.7;
       font-style: italic;
     }
 
-    /* STORY GRID */
-    .story-grid {
+    /* BOOK HERO */
+    .book-hero {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 45px;
-      align-items: start;
-    }
-
-    .story {
-      text-align: center;
+      grid-template-columns: minmax(280px, 430px) minmax(0, 1fr);
+      gap: 55px;
+      align-items: center;
+      margin: 0 auto 70px;
     }
 
     .cover-frame {
-      width: min(100%, 430px);
-      margin: 0 auto 25px;
+      width: 100%;
       padding: 4px;
       border: 1px solid rgba(218, 181, 84, .65);
       background: linear-gradient(
@@ -168,88 +164,147 @@
         rgba(218,181,84,.15)
       );
       box-shadow:
-        0 12px 35px rgba(0,0,0,.55),
-        0 0 25px rgba(57,149,210,.12);
+        0 16px 40px rgba(0,0,0,.6),
+        0 0 30px rgba(57,149,210,.15);
     }
 
     .cover-frame img {
+      display: block;
       width: 100%;
       height: auto;
-      display: block;
     }
 
-    .story h2 {
-      color: #e2c46c;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 27px;
-      margin-bottom: 8px;
+    .book-copy {
+      color: #d1c8b6;
+      font-size: 17px;
+      line-height: 1.75;
     }
 
-    .story-type {
-      color: #8bc7e8;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
+    .book-copy p {
       margin-bottom: 20px;
     }
 
-    .story-text {
-      max-width: 480px;
-      margin: 0 auto 25px;
-      color: #cfc6b3;
-      line-height: 1.65;
-      font-size: 16px;
+    .book-copy strong {
+      color: #ead183;
     }
 
-    /* DOWNLOAD AREA */
-    .extras {
-      width: min(100%, 480px);
-      margin: 25px auto 0;
-      padding: 22px 18px;
-      border-top: 1px solid rgba(211,177,84,.45);
-      border-bottom: 1px solid rgba(211,177,84,.45);
-      background: rgba(0,0,0,.18);
-    }
-
-    .extras h3 {
-      color: #d7b65d;
+    .coming-soon {
+      margin-top: 32px;
+      padding: 17px 20px;
+      text-align: center;
+      color: #e4c56a;
+      border-top: 1px solid rgba(211,177,84,.55);
+      border-bottom: 1px solid rgba(211,177,84,.55);
+      background: rgba(0,0,0,.2);
       text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 15px;
-      margin-bottom: 16px;
+      letter-spacing: 6px;
+      font-size: 17px;
+      text-shadow: 0 0 15px rgba(211,163,57,.25);
     }
 
-    .button {
+    /* SECTION HEADING */
+    .section-title {
+      text-align: center;
+      color: #d9b857;
+      text-transform: uppercase;
+      letter-spacing: 7px;
+      font-size: clamp(30px, 4vw, 46px);
+      margin-bottom: 15px;
+      text-shadow: 0 0 20px rgba(211, 163, 57, .22);
+    }
+
+    .section-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+      color: #aaa18f;
+      font-size: 16px;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* CHARACTER SECTIONS */
+    .character {
+      display: grid;
+      grid-template-columns: minmax(260px, 430px) minmax(0, 1fr);
+      gap: 50px;
+      align-items: center;
+      margin: 0 auto 70px;
+      padding-bottom: 55px;
+      border-bottom: 1px solid rgba(210,175,80,.22);
+    }
+
+    .character.reverse {
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 430px);
+    }
+
+    .character.reverse .character-image {
+      order: 2;
+    }
+
+    .character.reverse .character-copy {
+      order: 1;
+    }
+
+    .character-image {
+      padding: 4px;
+      border: 1px solid rgba(218,181,84,.5);
+      background: linear-gradient(
+        145deg,
+        rgba(218,181,84,.22),
+        rgba(31,137,187,.14),
+        rgba(218,181,84,.12)
+      );
+      box-shadow:
+        0 12px 35px rgba(0,0,0,.5),
+        0 0 22px rgba(57,149,210,.1);
+    }
+
+    .character-image img {
       display: block;
       width: 100%;
-      margin: 10px auto;
-      padding: 12px 14px;
-      color: #e7d39a;
-      text-decoration: none;
+      height: auto;
+    }
+
+    .character-copy h3 {
+      color: #e2c46c;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 8px;
+    }
+
+    .character-class {
+      color: #8bc7e8;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 12px;
-      border: 1px solid rgba(215,182,93,.55);
-      background: linear-gradient(
-        90deg,
-        rgba(15,41,68,.72),
-        rgba(47,19,65,.72)
-      );
-      transition: .25s;
+      line-height: 1.6;
+      margin-bottom: 24px;
     }
 
-    .button:hover {
-      color: white;
-      border-color: #58bce8;
-      box-shadow: 0 0 15px rgba(57,166,219,.3);
-      transform: translateY(-2px);
+    .character-copy p {
+      color: #cfc6b3;
+      line-height: 1.75;
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    .character-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .good-boy {
+      color: #e4c56a !important;
+      font-weight: bold;
+      font-style: italic;
+      font-size: 18px !important;
     }
 
     /* FOOTER */
     footer {
       text-align: center;
-      margin-top: 70px;
+      margin-top: 20px;
       padding-top: 25px;
       border-top: 1px solid rgba(210,175,80,.25);
       color: #867b67;
@@ -257,11 +312,8 @@
       letter-spacing: 2px;
     }
 
+    /* MOBILE */
     @media (max-width: 800px) {
-      .story-grid {
-        grid-template-columns: 1fr;
-        gap: 65px;
-      }
 
       nav {
         gap: 14px;
@@ -269,6 +321,42 @@
       }
 
       h1 {
+        letter-spacing: 4px;
+      }
+
+      .book-hero {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .cover-frame {
+        width: min(430px, 100%);
+        margin: 0 auto;
+      }
+
+      .character,
+      .character.reverse {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .character-image,
+      .character.reverse .character-image {
+        order: 1;
+        width: min(430px, 100%);
+        margin: 0 auto;
+      }
+
+      .character-copy,
+      .character.reverse .character-copy {
+        order: 2;
+      }
+
+      .character-copy {
+        text-align: center;
+      }
+
+      .section-title {
         letter-spacing: 4px;
       }
     }
@@ -279,6 +367,7 @@
 
   <main class="page">
 
+    <!-- LOGO -->
     <div class="logo-wrap">
       <img
         class="logo"
@@ -286,115 +375,356 @@
         alt="World of Aldaria">
     </div>
 
+    <!-- NAVIGATION -->
     <nav>
       <a href="index.html">Home</a>
       <span class="diamond">◆</span>
       <a href="stories.html">Stories</a>
       <span class="diamond">◆</span>
-      <a href="index.html">The Book</a>
+      <a href="heart.html">Heart of Aldaria</a>
     </nav>
 
     <div class="divider"></div>
 
-    <h1>Stories</h1>
+    <!-- BOOK -->
+    <h1>Heart of Aldaria</h1>
 
-    <p class="intro">
-      Tales from beyond the main story of Aldaria.
-      Adventures, monsters, magic, questionable decisions,
-      and the occasional catastrophe.
+    <p class="tagline">
+      Magic, mayhem, and something far more dangerous...
+      falling in love.
     </p>
 
-    <section class="story-grid">
+    <section class="book-hero">
 
-      <!-- THE RITE OF RETURNING -->
-      <article class="story">
+      <div class="cover-frame">
+        <img
+          src="cover.png"
+          alt="Heart of Aldaria cover">
+      </div>
 
-        <div class="cover-frame">
-          <img
-            src="rite-of-returning.png"
-            alt="The Rite of Returning">
-        </div>
+      <div class="book-copy">
 
-        <h2>The Rite of Returning</h2>
-
-        <div class="story-type">
-          A World of Aldaria Story
-        </div>
-
-        <p class="story-text">
-          A journey to Millbrook for the Rite of Returning becomes
-          something far more dangerous when Marla and Magnes discover
-          a town under a curse, a desecrated cemetery, and things in
-          the fields that were never meant to walk.
+        <p>
+          When a mission from the Dragon Council sends an unlikely
+          band of adventurers into the dangerous northern lands,
+          nobody expects things to go according to plan. They'd just
+          prefer the plan survive long enough to be recognizable.
         </p>
 
-        <div class="extras">
-
-          <h3>From the Bestiary</h3>
-
-          <a
-            class="button"
-            href="rite-of-returning-gravefield-guardian.pdf"
-            target="_blank">
-            Gravefield Guardian
-          </a>
-
-          <a
-            class="button"
-            href="rite-of-returning-sinister-squashling.pdf"
-            target="_blank">
-            Sinister Squashling
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- THE WARLOCK AFFAIR -->
-      <article class="story">
-
-        <div class="cover-frame">
-          <img
-            src="warlock-affair.png"
-            alt="The Warlock Affair">
-        </div>
-
-        <h2>The Warlock Affair</h2>
-
-        <div class="story-type">
-          A Tale from the World of Aldaria
-        </div>
-
-        <p class="story-text">
-          Magic has consequences, especially when demons,
-          warlocks, ancient bargains, and the people of Aldaria
-          become involved.
+        <p>
+          Magnes is a sorcerer with powerful magic, questionable
+          judgment, and a talent for finding trouble. Marla is a
+          necromancer who would generally rather be left alone with
+          her dog and the dead. Galen is a paladin trying to do the
+          right thing in a world that rarely makes that simple.
+          Anya is a warrior far from the life she once knew, and
+          Tally is a cleric of Hermes whose god occasionally takes
+          a rather personal interest in her affairs.
         </p>
 
-        <div class="extras">
+        <p>
+          Together, they find themselves caught in something far
+          larger than the mission that brought them together,
+          involving dragons, kingdoms, old secrets, dangerous magic,
+          and forces capable of changing Aldaria itself.
+        </p>
 
-          <h3>From the Bestiary</h3>
+        <p>
+          <strong>Assuming they don't kill each other first.</strong>
+        </p>
 
-          <a
-            class="button"
-            href="warlock-affair-hellforged-sentinel.pdf"
-            target="_blank">
-            Hellforged Sentinel
-          </a>
+        <p>
+          <strong>The Heart of Aldaria</strong> is a fantasy adventure
+          about found family, unlikely love, terrible decisions, and
+          the people who become home along the way.
+        </p>
 
-          <a
-            class="button"
-            href="warlock-affair-meridiana.pdf"
-            target="_blank">
-            Meridiana “Meri”
-          </a>
-
+        <div class="coming-soon">
+          Coming Soon
         </div>
 
-      </article>
+      </div>
 
     </section>
+
+    <div class="divider"></div>
+
+    <!-- PARTY -->
+    <h2 class="section-title">Meet the Party</h2>
+
+    <p class="section-intro">
+      Heroes are a matter of perspective.
+      These are the people who ended up with the job.
+    </p>
+
+
+    <!-- MARLA -->
+    <section class="character">
+
+      <div class="character-image">
+        <img src="marla.png" alt="Marla Al-Vutha">
+      </div>
+
+      <div class="character-copy">
+
+        <h3>Marla Al-Vutha</h3>
+
+        <div class="character-class">
+          True Necromancer • Sorcerer • Reluctant People Person
+        </div>
+
+        <p>
+          Marla is perfectly comfortable with the dead.
+          It's the living who tend to complicate things.
+        </p>
+
+        <p>
+          Raised in the Ulkarian Empire and armed with powerful
+          necromantic magic, a sharp tongue, and an extremely flexible
+          interpretation of what constitutes an appropriate solution,
+          Marla isn't particularly interested in being anyone's hero.
+          Unfortunately, adventure keeps happening to her anyway.
+        </p>
+
+        <p>
+          Usually with Spud nearby.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- MAGNES -->
+    <section class="character reverse">
+
+      <div class="character-image">
+        <img src="magnes.png" alt="Magnes">
+      </div>
+
+      <div class="character-copy">
+
+        <h3>Magnes</h3>
+
+        <div class="character-class">
+          Bard • Sorcerer • Professional Bad Influence
+        </div>
+
+        <p>
+          Magnes can talk his way into almost anything.
+        </p>
+
+        <p>
+          Getting back out is another matter.
+        </p>
+
+        <p>
+          Charming, impulsive, magically gifted, and equipped with
+          enough confidence to compensate for several people, Magnes
+          approaches danger with the deeply questionable belief that
+          things will probably work out.
+        </p>
+
+        <p>
+          Sometimes they even do.
+        </p>
+
+        <p>
+          The rest of the time, at least it'll make a good story.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ANYA -->
+    <section class="character">
+
+      <div class="character-image">
+        <img src="anya.png" alt="Anya">
+      </div>
+
+      <div class="character-copy">
+
+        <h3>Anya</h3>
+
+        <div class="character-class">
+          Fighter • Weapon Master • Extremely Difficult to Kill
+        </div>
+
+        <p>
+          Anya knows weapons.
+        </p>
+
+        <p>
+          Swords, axes, bows, knives. If someone invented a new way
+          to kill something yesterday, give her five minutes and
+          she'll probably figure that out too.
+        </p>
+
+        <p>
+          But the warrior traveling through Aldaria carries a history
+          stranger than most of her companions realize, and beneath
+          the armor, stubbornness, and formidable talent for violence
+          is someone trying to discover where she belongs in a world
+          that was never supposed to be hers.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- GALEN -->
+    <section class="character reverse">
+
+      <div class="character-image">
+        <img src="galen.png" alt="Galen">
+      </div>
+
+      <div class="character-copy">
+
+        <h3>Galen</h3>
+
+        <div class="character-class">
+          Paladin • Protector • Tired of Everyone's Shit
+        </div>
+
+        <p>
+          Galen has spent decades trying to leave the world a little
+          better than he found it.
+        </p>
+
+        <p>
+          The world has not always cooperated.
+        </p>
+
+        <p>
+          Steady where his companions are chaotic, compassionate
+          without being naive, and considerably more dangerous than
+          his quiet demeanor suggests, Galen often finds himself
+          serving as the party's conscience.
+        </p>
+
+        <p>
+          Whether the party actually listens to him is an entirely
+          separate matter.
+        </p>
+
+        <p>
+          Of course, Galen has one complication his companions don't:
+          he wasn't born in Aldaria at all. He arrived here from
+          1980s Earth, leaving him to navigate a world of dragons,
+          magic, gods, and monsters with memories of a very different
+          life behind him.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- TALLY -->
+    <section class="character">
+
+      <div class="character-image">
+        <img src="tally.png" alt="Tally">
+      </div>
+
+      <div class="character-copy">
+
+        <h3>Tally</h3>
+
+        <div class="character-class">
+          Cleric of Hermes • Healer • Traveler
+        </div>
+
+        <p>
+          Tally serves Hermes, god of travelers, messengers,
+          merchants, thieves, and anyone else who understands that
+          sometimes the road itself matters more than the destination.
+        </p>
+
+        <p>
+          Warm, capable, and fiercely devoted to helping people,
+          she's often the gentlest member of the party.
+        </p>
+
+        <p>
+          This should not be confused with harmless.
+        </p>
+
+        <p>
+          And unlike most clerics, Tally occasionally gets the
+          opportunity to argue her case directly with management.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SPUD -->
+    <section class="character reverse">
+
+      <div class="character-image">
+        <img src="spud.png" alt="Spud">
+      </div>
+
+      <div class="character-copy">
+
+        <h3>Spud</h3>
+
+        <div class="character-class">
+          Dog • Companion • Medical Mystery
+        </div>
+
+        <p>
+          Spud is Marla's elderly, blind Chihuahua mix.
+        </p>
+
+        <p>
+          He has cloudy eyes, almost no teeth, very little hair,
+          a tongue that rarely stays inside his mouth, and absolutely
+          no intention of dying.
+        </p>
+
+        <p>
+          Marla has made certain of that last part.
+        </p>
+
+        <p>
+          He spends much of his time riding in Marla's magically
+          enhanced puppy pouch, coughing at inconvenient moments
+          and demonstrating that necromancy occasionally has
+          perfectly reasonable applications.
+        </p>
+
+        <p>
+          For reasons nobody has ever managed to explain, Magnes
+          appears to be the only person in the world Spud actively
+          hates. Despite being mostly blind and mostly deaf, the
+          ancient little creature possesses an almost supernatural
+          ability to locate Magnes under virtually any circumstances.
+        </p>
+
+        <p>
+          Usually so he can growl at him.
+        </p>
+
+        <p class="good-boy">
+          He is a good boy.
+        </p>
+
+        <p>
+          Mostly.
+        </p>
+
+      </div>
+
+    </section>
+
 
     <footer>
       WORLD OF ALDARIA
