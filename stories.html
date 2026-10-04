@@ -44,7 +44,45 @@
       z-index: -1;
     }
 
+    /* FLOATING MAGIC PARTICLES */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      animation: float linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes float {
+      0% {
+        opacity: 0;
+        transform: translateY(100vh) scale(.5);
+      }
+
+      10% {
+        opacity: .8;
+      }
+
+      90% {
+        opacity: .4;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-10vh) scale(1.2);
+      }
+    }
+
     .page {
+      position: relative;
+      z-index: 1;
       width: min(1200px, 92%);
       margin: 0 auto;
       padding: 35px 0 70px;
@@ -277,6 +315,8 @@
 
 <body>
 
+  <div class="particles" id="particles"></div>
+
   <main class="page">
 
     <div class="logo-wrap">
@@ -286,15 +326,15 @@
         alt="World of Aldaria">
     </div>
 
-<nav>
-    <a href="index.html">Home</a>
-    <span class="diamond">◆</span>
-    <a href="books.html">Books</a>
-    <span class="diamond">◆</span>
-    <a href="stories.html">Stories</a>
-    <span class="diamond">◆</span>
-    <a href="about.html">About</a>
-</nav>
+    <nav>
+      <a href="index.html">Home</a>
+      <span class="diamond">◆</span>
+      <a href="books.html">Books</a>
+      <span class="diamond">◆</span>
+      <a href="stories.html">Stories</a>
+      <span class="diamond">◆</span>
+      <a href="about.html">About</a>
+    </nav>
 
     <div class="divider"></div>
 
@@ -403,6 +443,32 @@
     </footer>
 
   </main>
+
+  <script>
+    /* FLOATING MAGIC PARTICLES */
+    const pContainer = document.getElementById('particles');
+    const colors = ['#3ab8ff','#7b3fa0','#c9a84c','#ffffff','#ff9944'];
+
+    for (let i = 0; i < 35; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+
+      const size = Math.random() * 5 + 2;
+
+      p.style.cssText = `
+        width:${size}px;
+        height:${size}px;
+        left:${Math.random()*100}%;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        animation-duration:${Math.random()*12+8}s;
+        animation-delay:${Math.random()*10}s;
+        filter:blur(${Math.random()*2}px);
+        box-shadow:0 0 ${size*2}px currentColor;
+      `;
+
+      pContainer.appendChild(p);
+    }
+  </script>
 
 </body>
 </html>
