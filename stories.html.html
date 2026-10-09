@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Stories | World of Aldaria</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(13, 74, 128, 0.38), transparent 34%),
+        radial-gradient(circle at 78% 70%, rgba(66, 16, 104, 0.32), transparent 38%),
+        linear-gradient(135deg, #020813 0%, #040815 45%, #100520 100%);
+      color: #eee3c7;
+      font-family: Georgia, "Times New Roman", serif;
+      overflow-x: hidden;
+    }
+
+    /* STARS */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.85) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(76,184,255,.75) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,199,78,.65) 1px, transparent 1.5px);
+      background-size: 173px 173px, 251px 251px, 317px 317px;
+      background-position: 20px 30px, 80px 120px, 140px 50px;
+      opacity: .55;
+      z-index: -1;
+    }
+
+    /* FLOATING MAGIC PARTICLES */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      animation: float linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes float {
+      0% {
+        opacity: 0;
+        transform: translateY(100vh) scale(.5);
+      }
+
+      10% {
+        opacity: .8;
+      }
+
+      90% {
+        opacity: .4;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-10vh) scale(1.2);
+      }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1200px, 92%);
+      margin: 0 auto;
+      padding: 35px 0 70px;
+    }
+
+    /* LOGO */
+    .logo-wrap {
+      text-align: center;
+    }
+
+    .logo {
+      width: min(620px, 92%);
+      height: auto;
+      filter: drop-shadow(0 0 16px rgba(42, 156, 222, .32));
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin: 12px auto 28px;
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #d9bd68;
+      text-decoration: none;
+      transition: .25s;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #40bfff;
+    }
+
+    .diamond {
+      color: #238bc0;
+      font-size: 11px;
+    }
+
+    /* DIVIDER */
+    .divider {
+      width: min(450px, 80%);
+      height: 1px;
+      margin: 0 auto 30px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #c9a44d,
+        #43b9e8,
+        #c9a44d,
+        transparent
+      );
+      position: relative;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "◆";
+      position: absolute;
+      top: -8px;
+      color: #e4c56a;
+      font-size: 12px;
+    }
+
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    /* PAGE TITLE */
+    h1 {
+      text-align: center;
+      color: #d9b857;
+      text-transform: uppercase;
+      letter-spacing: 7px;
+      font-size: clamp(34px, 5vw, 58px);
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(211, 163, 57, .22);
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 48px;
+      color: #c9c1b1;
+      font-size: 17px;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* ADULT CONTENT NOTICE */
+    .adult-notice {
+      max-width: 800px;
+      margin: 0 auto 45px;
+      padding: 23px 26px;
+      text-align: center;
+      border: 1px solid rgba(218,181,84,.55);
+      background: rgba(9, 13, 32, .78);
+      box-shadow: 0 0 24px rgba(57,149,210,.12);
+      color: #e3d5b5;
+      line-height: 1.7;
+    }
+
+    .adult-notice strong {
+      color: #e2c46c;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .adult-notice a {
+      color: #8bc7e8;
+      text-underline-offset: 4px;
+    }
+
+    .adult-notice a:hover { color: #fff; }
+
+    .cover-frame a {
+      display: block;
+      cursor: pointer;
+    }
+
+    .cover-frame {
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .cover-frame:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.65), 0 0 28px rgba(57,149,210,.32);
+    }
+
+    .read-hint {
+      color: #8bc7e8;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin: -12px auto 20px;
+    }
+
+    /* STORY GRID */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 45px;
+      align-items: start;
+    }
+
+    .story {
+      text-align: center;
+    }
+
+    .cover-frame {
+      width: min(100%, 430px);
+      margin: 0 auto 25px;
+      padding: 4px;
+      border: 1px solid rgba(218, 181, 84, .65);
+      background: linear-gradient(
+        145deg,
+        rgba(218,181,84,.28),
+        rgba(31,137,187,.18),
+        rgba(218,181,84,.15)
+      );
+      box-shadow:
+        0 12px 35px rgba(0,0,0,.55),
+        0 0 25px rgba(57,149,210,.12);
+    }
+
+    .cover-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .story h2 {
+      color: #e2c46c;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .story-type {
+      color: #8bc7e8;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .story-text {
+      max-width: 480px;
+      margin: 0 auto 25px;
+      color: #cfc6b3;
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    /* DOWNLOAD AREA */
+    .extras {
+      width: min(100%, 480px);
+      margin: 25px auto 0;
+      padding: 22px 18px;
+      border-top: 1px solid rgba(211,177,84,.45);
+      border-bottom: 1px solid rgba(211,177,84,.45);
+      background: rgba(0,0,0,.18);
+    }
+
+    .extras h3 {
+      color: #d7b65d;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      margin: 10px auto;
+      padding: 12px 14px;
+      color: #e7d39a;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      border: 1px solid rgba(215,182,93,.55);
+      background: linear-gradient(
+        90deg,
+        rgba(15,41,68,.72),
+        rgba(47,19,65,.72)
+      );
+      transition: .25s;
+    }
+
+    .button:hover {
+      color: white;
+      border-color: #58bce8;
+      box-shadow: 0 0 15px rgba(57,166,219,.3);
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 70px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(210,175,80,.25);
+      color: #867b67;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 800px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 65px;
+      }
+
+      nav {
+        gap: 14px;
+        letter-spacing: 2px;
+      }
+
+      h1 {
+        letter-spacing: 4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <main class="page">
+
+    <div class="logo-wrap">
+      <img
+        class="logo"
+        src="world-of-aldaria-logo-03t.png"
+        alt="World of Aldaria">
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <span class="diamond">◆</span>
+      <a href="books.html">Books</a>
+      <span class="diamond">◆</span>
+      <a href="stories.html">Stories</a>
+      <span class="diamond">◆</span>
+      <a href="about.html">About</a>
+    </nav>
+
+    <div class="divider"></div>
+
+    <h1>Stories</h1>
+
+    <p class="intro">
+      Tales from beyond the main story of Aldaria.
+      Adventures, monsters, magic, questionable decisions,
+      and the occasional catastrophe.
+    </p>
+
+    <aside class="adult-notice" aria-label="Adult content notice">
+      <p><strong>18+ | Adult Content</strong></p>
+      <p>These stories contain sexually explicit material intended for adults only.
+      Clicking a story cover takes you to Literotica, an external adult-content website.</p>
+      <p>Visit our shared <a href="https://www.literotica.com/authors/MarlaAlVutha/works/stories" target="_blank" rel="noopener noreferrer">MarlaAlVutha Literotica profile (18+)</a> to see all our published stories.</p>
+    </aside>
+
+    <section class="story-grid">
+
+      <!-- THE RITE OF RETURNING -->
+      <article class="story">
+
+        <div class="cover-frame">
+          <a href="https://www.literotica.com/s/the-rite-of-returning" target="_blank" rel="noopener noreferrer" aria-label="Read The Rite of Returning on Literotica (18+, explicit content)">
+            <img src="rite-of-returning.png" alt="The Rite of Returning">
+          </a>
+        </div>
+        <p class="read-hint">Click the cover to read on Literotica • 18+</p>
+
+        <h2>The Rite of Returning</h2>
+
+        <div class="story-type">
+          A World of Aldaria Story
+        </div>
+
+        <p class="story-text">
+          A journey to Millbrook for the Rite of Returning becomes
+          something far more dangerous when Marla and Magnes discover
+          a town under a curse, a desecrated cemetery, and things in
+          the fields that were never meant to walk.
+        </p>
+
+        <div class="extras">
+
+          <h3>From the Bestiary</h3>
+
+          <a
+            class="button"
+            href="rite-of-returning-gravefield-guardian.pdf"
+            target="_blank">
+            Gravefield Guardian
+          </a>
+
+          <a
+            class="button"
+            href="rite-of-returning-sinister-squashling.pdf"
+            target="_blank">
+            Sinister Squashling
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- THE WARLOCK AFFAIR -->
+      <article class="story">
+
+        <div class="cover-frame">
+          <a href="https://www.literotica.com/s/the-warlock-affair" target="_blank" rel="noopener noreferrer" aria-label="Read The Warlock Affair on Literotica (18+, explicit content)">
+            <img src="warlock-affair.png" alt="The Warlock Affair">
+          </a>
+        </div>
+        <p class="read-hint">Click the cover to read on Literotica • 18+</p>
+
+        <h2>The Warlock Affair</h2>
+
+        <div class="story-type">
+          A Tale from the World of Aldaria
+        </div>
+
+        <p class="story-text">
+          Magic has consequences, especially when demons,
+          warlocks, ancient bargains, and the people of Aldaria
+          become involved.
+        </p>
+
+        <div class="extras">
+
+          <h3>From the Bestiary</h3>
+
+          <a
+            class="button"
+            href="warlock-affair-hellforged-sentinel.pdf"
+            target="_blank">
+            Hellforged Sentinel
+          </a>
+
+          <a
+            class="button"
+            href="warlock-affair-meridiana.pdf"
+            target="_blank">
+            Meridiana “Meri”
+          </a>
+
+        </div>
+
+      </article>
+
+    </section>
+
+    <footer>
+      WORLD OF ALDARIA
+    </footer>
+
+  </main>
+
+  <script>
+    /* FLOATING MAGIC PARTICLES */
+    const pContainer = document.getElementById('particles');
+    const colors = ['#3ab8ff','#7b3fa0','#c9a84c','#ffffff','#ff9944'];
+
+    for (let i = 0; i < 35; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+
+      const size = Math.random() * 5 + 2;
+
+      p.style.cssText = `
+        width:${size}px;
+        height:${size}px;
+        left:${Math.random()*100}%;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        animation-duration:${Math.random()*12+8}s;
+        animation-delay:${Math.random()*10}s;
+        filter:blur(${Math.random()*2}px);
+        box-shadow:0 0 ${size*2}px currentColor;
+      `;
+
+      pContainer.appendChild(p);
+    }
+  </script>
+
+</body>
+</html>
