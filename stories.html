@@ -229,6 +229,45 @@
       margin: -12px auto 20px;
     }
 
+
+    /* HALLOWEEN STORY CONTEST */
+    .contest {
+      max-width: 850px;
+      margin: 0 auto 55px;
+      text-align: center;
+    }
+    .contest-poster {
+      display: block;
+      width: min(100%, 480px);
+      margin: 0 auto 30px;
+      border: 1px solid rgba(218,181,84,.65);
+      padding: 4px;
+      background: linear-gradient(145deg, rgba(218,181,84,.28), rgba(31,137,187,.18));
+      box-shadow: 0 12px 35px rgba(0,0,0,.55), 0 0 25px rgba(57,149,210,.12);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .contest-poster:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.65), 0 0 28px rgba(57,149,210,.32);
+    }
+    .contest-poster img { display: block; width: 100%; height: auto; }
+    .contest h2 {
+      color: #e2c46c;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: clamp(22px, 3.5vw, 32px);
+      margin-bottom: 16px;
+    }
+    .contest p {
+      color: #cfc6b3;
+      font-size: 16px;
+      line-height: 1.75;
+      margin: 0 auto 15px;
+      max-width: 740px;
+    }
+    .contest .contest-date { color: #e2c46c; font-weight: bold; }
+    .contest .contest-hint { color: #8bc7e8; font-size: 13px; letter-spacing: 1px; }
+
     /* STORY GRID */
     .story-grid {
       display: grid;
@@ -400,6 +439,19 @@
       <p>Visit our shared <a href="https://www.literotica.com/authors/MarlaAlVutha/works/stories" target="_blank" rel="noopener noreferrer">MarlaAlVutha Literotica profile (18+)</a> to see all our published stories.</p>
     </aside>
 
+    <section class="contest" aria-label="Aldaria Halloween story contest">
+      <a class="contest-poster" href="https://www.literotica.com/authors/MarlaAlVutha/works/stories" target="_blank" rel="noopener noreferrer" aria-label="Visit our shared Literotica profile (18+, sexually explicit content)">
+        <img src="halloween26.png" alt="This Halloween, Enter Aldaria. Two stories, two writers, one world. Literotica Halloween Story Contest." loading="lazy">
+      </a>
+      <p class="contest-hint">Click the poster to visit our Literotica profile • 18+ adult content</p>
+      <h2>The Aldaria Halloween Showdown</h2>
+      <p><strong>Two stories. Two writers. One world.</strong></p>
+      <p>Marla and Magnes have taken their rivalry beyond the pages of Aldaria! Behind the characters are two real-life writers, Brenda and Jim Varian, each with a story entered in Literotica’s Halloween Story Contest.</p>
+      <p><strong>The challenge?</strong> Whose story will earn the higher reader rating? Will Marla’s <em>The Rite of Returning</em> claim victory, or will Magnes triumph with <em>The Warlock Affair</em>?</p>
+      <p class="contest-date">We’ll reveal the winner of our friendly competition on November 1st!</p>
+      <p>We’ll also share where each story placed in the official Halloween contest once those results are published.</p>
+    </section>
+
     <section class="story-grid">
 
       <!-- THE RITE OF RETURNING -->
@@ -419,10 +471,7 @@
         </div>
 
         <p class="story-text">
-          A journey to Millbrook for the Rite of Returning becomes
-          something far more dangerous when Marla and Magnes discover
-          a town under a curse, a desecrated cemetery, and things in
-          the fields that were never meant to walk.
+          When necromancer Marla al-Vutha arrives in the village of Millbrook to perform the ancient Rite of Returning, she expects a peaceful ceremony honoring the dead. Instead, she finds a desecrated cemetery, restless spirits, a murderous Harvest Guardian, and an alarming number of homicidal vegetables. With Magnes at her side, Marla must restore the boundary between life and death before the sacred ceremony can begin. A wickedly funny tale of magic, mayhem, remembrance, and the passionate affirmation that life goes on.
         </p>
 
         <div class="extras">
@@ -465,9 +514,7 @@
         </div>
 
         <p class="story-text">
-          Magic has consequences, especially when demons,
-          warlocks, ancient bargains, and the people of Aldaria
-          become involved.
+          What should have been a straightforward job retrieving a magical artifact turns into something far more complicated when Magnes Magnessun discovers a dead warlock and a very much alive succubus. Bound by powerful magic and desperate for freedom, the beautiful Meridiana presents Magnes with a temptation he never anticipated. Filled with dangerous magic, sharp wit, unexpected connections, and plenty of heat, <em>The Warlock Affair</em> proves that sometimes the greatest adventure isn't the one you were hired for.
         </p>
 
         <div class="extras">
