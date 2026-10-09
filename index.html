@@ -360,6 +360,37 @@
       animation: fadeIn 1.5s 1.1s ease both;
     }
 
+
+    /* ── Retro visitor counter ── */
+    .visitor-counter {
+      margin-top: 26px;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      letter-spacing: .16em;
+      color: var(--gold-light);
+      font-size: 11px;
+      animation: fadeIn 1.5s 1.2s ease both;
+    }
+
+    .visitor-counter-label {
+      margin-bottom: 10px;
+    }
+
+    .visitor-counter-frame {
+      display: inline-flex;
+      padding: 9px 14px;
+      background: #050810;
+      border: 1px solid rgba(201,168,76,.7);
+      border-radius: 3px;
+      box-shadow: 0 0 16px rgba(201,168,76,.16), inset 0 0 12px rgba(58,184,255,.08);
+    }
+
+    .visitor-counter-frame img {
+      display: block;
+      height: 24px;
+      max-width: 100%;
+    }
+
     /* ── Animations ── */
     @keyframes fadeDown {
       from {
@@ -552,6 +583,13 @@
   <p class="ornament">
     ⚔ &nbsp; MAGIC • MAYHEM • FOUND FAMILY • QUESTIONABLE DECISIONS &nbsp; ⚔
   </p>
+
+  <div class="visitor-counter" aria-label="World of Aldaria page view counter">
+    <div class="visitor-counter-label">✦ TRAVELERS THROUGH ALDARIA ✦</div>
+    <div class="visitor-counter-frame">
+      <img src="https://hits.sh/worldofaldaria.com.svg?style=flat-square&amp;label=VISITS&amp;color=0c1322&amp;labelColor=0c1322" alt="Homepage visit count, provided by hits.sh" referrerpolicy="no-referrer" />
+    </div>
+  </div>
 
 </div>
 
