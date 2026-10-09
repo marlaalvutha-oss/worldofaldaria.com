@@ -182,6 +182,53 @@
       font-style: italic;
     }
 
+    /* ADULT CONTENT NOTICE */
+    .adult-notice {
+      max-width: 800px;
+      margin: 0 auto 45px;
+      padding: 23px 26px;
+      text-align: center;
+      border: 1px solid rgba(218,181,84,.55);
+      background: rgba(9, 13, 32, .78);
+      box-shadow: 0 0 24px rgba(57,149,210,.12);
+      color: #e3d5b5;
+      line-height: 1.7;
+    }
+
+    .adult-notice strong {
+      color: #e2c46c;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .adult-notice a {
+      color: #8bc7e8;
+      text-underline-offset: 4px;
+    }
+
+    .adult-notice a:hover { color: #fff; }
+
+    .cover-frame a {
+      display: block;
+      cursor: pointer;
+    }
+
+    .cover-frame {
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .cover-frame:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.65), 0 0 28px rgba(57,149,210,.32);
+    }
+
+    .read-hint {
+      color: #8bc7e8;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin: -12px auto 20px;
+    }
+
     /* STORY GRID */
     .story-grid {
       display: grid;
@@ -346,16 +393,24 @@
       and the occasional catastrophe.
     </p>
 
+    <aside class="adult-notice" aria-label="Adult content notice">
+      <p><strong>18+ | Adult Content</strong></p>
+      <p>These stories contain sexually explicit material intended for adults only.
+      Clicking a story cover takes you to Literotica, an external adult-content website.</p>
+      <p>Visit our shared <a href="https://www.literotica.com/authors/MarlaAlVutha/works/stories" target="_blank" rel="noopener noreferrer">MarlaAlVutha Literotica profile (18+)</a> to see all our published stories.</p>
+    </aside>
+
     <section class="story-grid">
 
       <!-- THE RITE OF RETURNING -->
       <article class="story">
 
         <div class="cover-frame">
-          <img
-            src="rite-of-returning.png"
-            alt="The Rite of Returning">
+          <a href="https://www.literotica.com/s/the-rite-of-returning" target="_blank" rel="noopener noreferrer" aria-label="Read The Rite of Returning on Literotica (18+, explicit content)">
+            <img src="rite-of-returning.png" alt="The Rite of Returning">
+          </a>
         </div>
+        <p class="read-hint">Click the cover to read on Literotica • 18+</p>
 
         <h2>The Rite of Returning</h2>
 
@@ -397,10 +452,11 @@
       <article class="story">
 
         <div class="cover-frame">
-          <img
-            src="warlock-affair.png"
-            alt="The Warlock Affair">
+          <a href="https://www.literotica.com/s/the-warlock-affair" target="_blank" rel="noopener noreferrer" aria-label="Read The Warlock Affair on Literotica (18+, explicit content)">
+            <img src="warlock-affair.png" alt="The Warlock Affair">
+          </a>
         </div>
+        <p class="read-hint">Click the cover to read on Literotica • 18+</p>
 
         <h2>The Warlock Affair</h2>
 
